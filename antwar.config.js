@@ -5,6 +5,7 @@ var markdown = require('./utilities/markdown');
 var highlight = require('./utilities/highlight');
 
 module.exports = {
+  maximumWorkers: process.env.TRAVIS && 1, // Faster on Travis
   template: {
     title: 'webpack',
     description: 'webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.',
@@ -245,10 +246,10 @@ function processPage() {
       return o.sectionName + '/' + o.fileName.split('.')[0]
     },
     content: function(o) {
-      return markdown().process(o.file.__content, highlight);
+      return markdown().process(o.file.body, highlight);
     },
     anchors: function(o) {
-      return markdown().getAnchors(o.file.__content);
+      return markdown().getAnchors(o.file.body);
     },
     contributors: function(o) {
       return Array.isArray(o.file.contributors) && o.file.contributors.length && o.file.contributors.slice().sort();
