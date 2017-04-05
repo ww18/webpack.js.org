@@ -67,4 +67,4 @@ module.exports = {
 }
 ```
 
-With above two steps, you can generate a new bundle specifically for all the CSS modules and add them as a separate tag in the `index.html`.
+With above three steps, you can generate a new bundle specifically for all the CSS modules and add them as a separate tag in the `index.html`.
